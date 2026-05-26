@@ -2,11 +2,25 @@
   "name": "ci-cd-project",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "lint": "eslint . --ext .js",
+    "test": "jest --coverage",
+    "test:ci": "jest --coverage --ci --forceExit"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@sentry/node": "^10.54.0",
+    "express": "^5.2.1",
+    "prom-client": "^15.1.3"
+  },
+  "devDependencies": {
+    "eslint": "^10.4.0",
+    "jest": "^30.4.2",
+    "nodemon": "^3.1.14",
+    "supertest": "^7.2.2"
+  }
 }
