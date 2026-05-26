@@ -34,7 +34,9 @@ jobs:
     needs: test
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -48,6 +50,7 @@ jobs:
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
+        
         with:
           context: .
           push: true
