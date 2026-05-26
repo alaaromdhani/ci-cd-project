@@ -1,4 +1,5 @@
 module.exports = {
+    files: ["**/*.js"],
     env: {
       node: true,
       es2021: true,
