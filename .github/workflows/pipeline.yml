@@ -76,7 +76,9 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/ec2-user/ci-cd-project
+            
+            cd /home/ec2-user/ci-cd-project/ci-cd-project
+            ls
             git pull origin ${{ github.ref_name }}
             chmod +x scripts/deploy.sh
             ./scripts/deploy.sh ghcr.io/${{ github.repository }}:${{ github.sha }}             
