@@ -67,9 +67,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Debug SSH key
         run: |
-          echo "Key length: $(echo "${{ secrets.SSH_PRIVATE_KEY }}" | wc -c)"
-          echo "First line: $(echo "${{ secrets.SSH_PRIVATE_KEY }}" | head -1)"
-          echo "Last line: $(echo "${{ secrets.SSH_PRIVATE_KEY }}" | tail -1)"
           echo "Server host: ${{ secrets.SERVER_HOST }}"
           echo "Server user: ${{ secrets.SERVER_USER }}"
       - name: Deploy to Contabo VPS
