@@ -42,7 +42,7 @@ echo "==> Setting image tag to $IMAGE_TAG"
 sed -i "s/IMAGE_TAG=.*/IMAGE_TAG=$IMAGE_TAG/" $IDLE_DIR/.env
 
 # ── Login to GHCR ─────────────────────────────────────────────────────────────
-echo "==> Logging into GHCR"
+echo "==> Logging into GHCR by TTy"
 echo $GITHUB_TOKEN | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
 # from where $GITHUB_ACTOR come from 
 # ── Pull new image ────────────────────────────────────────────────────────────
