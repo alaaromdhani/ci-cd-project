@@ -23,7 +23,7 @@ else
   IDLE_SLOT="blue"
   IDLE_PORT=8000
 fi
-
+echo $GITHUB_TOKEN;
 IDLE_DIR="/home/ec2-user/ci-cd-project/app-$IDLE_SLOT"
 
 echo "================================================"
