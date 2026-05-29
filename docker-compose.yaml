@@ -1,0 +1,13 @@
+services:
+  app:
+    image: ghcr.io/${GITHUB_REPOSITORY}:${IMAGE_TAG}
+    container_name: app-${SLOT}
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT}:8000"
+    environment:
+      - NODE_ENV=production
+      - PORT=8000
+networks:
+  default:
+    name: app-${SLOT}-network

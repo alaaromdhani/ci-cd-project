@@ -63,12 +63,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Debug SSH key
-        run: |
-          echo "Server host: ${{ secrets.SERVER_HOST }}"
-          echo "Server user: ${{ secrets.SERVER_USER }}"
       - name: Deploy to Contabo VPS
         uses: appleboy/ssh-action@v1
         with:
@@ -76,9 +70,5 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            
-            cd /home/ec2-user/ci-cd-project/ci-cd-project
-            ls
-            git pull origin ${{ github.ref_name }}
-            chmod +x scripts/deploy.sh
-            ./scripts/deploy.sh ghcr.io/${{ github.repository }}:${{ github.sha }}             
+            bash /home/ec2-user/ci-cd-project/deploy.sh ${{ github.sha }}           
+              
