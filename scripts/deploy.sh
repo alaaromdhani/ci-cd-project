@@ -62,8 +62,8 @@ echo "beginning tests on the new script"
 PASSED=false
 for i in {1..10}; do
   echo "test number $i";
-  STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:$IDLE_PORT/health)
-  echo $STATUS;
+  STATUS=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:$IDLE_PORT/health")
+  echo "completing the command"
   if [ "$STATUS" = "200" ]; then
     PASSED=true
     echo "    Attempt $i — passed ✅"
