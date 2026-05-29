@@ -54,8 +54,8 @@ docker pull ghcr.io/$REPO:$IMAGE_TAG
 # ── Start new version with Docker Compose ────────────────────────────────────
 echo "==> Starting app-$IDLE_SLOT with Docker Compose"
 cd $IDLE_DIR
-docker compose down 2>/dev/null || true
-docker compose up -d
+docker-compose down 2>/dev/null || true
+docker-compose up -d
 # ── Health check ──────────────────────────────────────────────────────────────
 echo "==> Health checking app-$IDLE_SLOT on port $IDLE_PORT"
 PASSED=false
@@ -75,7 +75,7 @@ if [ "$PASSED" = "false" ]; then
   echo ""
   echo "==> Health check failed — aborting deploy"
   echo "==> app-$LIVE_SLOT is still live on port $CURRENT_PORT — untouched"
-  docker compose down
+  docker-compose down
   exit 1
 fi
 
