@@ -58,8 +58,10 @@ docker-compose down 2>/dev/null || true
 docker-compose up -d
 # ── Health check ──────────────────────────────────────────────────────────────
 echo "==> Health checking app-$IDLE_SLOT on port $IDLE_PORT"
+echo "beginning tests on the new script"
 PASSED=false
 for i in {1..10}; do
+  echo "test number $i";
   STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:$IDLE_PORT/health)
   echo $STATUS;
   if [ "$STATUS" = "200" ]; then
