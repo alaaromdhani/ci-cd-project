@@ -61,6 +61,7 @@ echo "==> Health checking app-$IDLE_SLOT on port $IDLE_PORT"
 PASSED=false
 for i in {1..10}; do
   STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:$IDLE_PORT/health)
+  echo $STATUS;
   if [ "$STATUS" = "200" ]; then
     PASSED=true
     echo "    Attempt $i — passed ✅"
@@ -69,6 +70,7 @@ for i in {1..10}; do
   echo "    Attempt $i — status $STATUS — retrying in 5s"
   sleep 5
 done
+echo "health check completed"
 
 # ── Abort if unhealthy ────────────────────────────────────────────────────────
 if [ "$PASSED" = "false" ]; then
